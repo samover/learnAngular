@@ -1,3 +1,3 @@
-githubUserSearch.controller('GitUserSearchController'. [function() {
+githubUserSearch.controller('GitUserSearchController', [function() {
 
 }]);
