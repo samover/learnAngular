@@ -1,8 +1,6 @@
 githubUserSearch.controller('GitUserSearchController', [function() {
   var self = this;
 
-  self.searchResult = {};
-
   self.doSearch = function() {
     self.searchResult = {
       'items': [

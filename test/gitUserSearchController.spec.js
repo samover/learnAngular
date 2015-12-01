@@ -27,7 +27,7 @@ describe('GitUserSearchController', function() {
     ];
 
     it('displays search result', function() {
-      crtl.searchTerm = 'Hello';
+      ctrl.searchTerm = 'Hello';
       ctrl.doSearch();
       expect(ctrl.searchResult.items).toEqual(items);
     });
