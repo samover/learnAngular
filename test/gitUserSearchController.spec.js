@@ -18,7 +18,7 @@ describe('GitUserSearchController', function() {
         "login": "tansaku",
         "avatar_url": "https://avatars.githubusercontent.com/u/30216?v=3",
         "html_url": "https://github.com/tansaku"
-      }, 
+      },
       {
         "login": "stephenlloyd",
         "avatar_url": "https://avatars.githubusercontent.com/u/196474?v=3",
@@ -27,7 +27,10 @@ describe('GitUserSearchController', function() {
     ];
 
     it('displays search result', function() {
+      crtl.searchTerm = 'Hello';
+      ctrl.doSearch();
       expect(ctrl.searchResult.items).toEqual(items);
     });
+
   });
 });
