@@ -17,10 +17,13 @@
 <body ng-controller="GitUserSearchController as searchCtrl">
   <div>
     <form class='form-horizontal'>
-      <input ng-model='searchCtrl.searchTerm' ng-change='searchCtrl.doSearch()' ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" type='text /'>
+      <input ng-model='searchCtrl.searchTerm' ng-change='searchCtrl.doSearch()'
+      ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500,
+      'blur': 0 } }" type='text /'>
       <button ng-click='searchCtrl.doSearch()' class='btn'>Search</button>
     </form>
-
+    <h3 ng-show='searchCtrl.searchTerm'>Your search for {{ searchCtrl.searchTerm }}
+    </h3>
     <ul class='list-group'>
       <li class="list-group-item" ng-repeat='item in searchCtrl.searchResult.items'>
         <img ng-src='{{item.avatar_url}}' width='50px'>
