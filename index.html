@@ -11,6 +11,7 @@
   <script src='bower_components/angular-resource/angular-resource.js' type= "text/javascript"></script>
   <script src='js/app.js' type="text/javascript"></script>
   <script src='js/gitUserSearchController.js'></script>
+  <script src='js/searchFactory.js'></script>
 </head>
 
 <body ng-controller="GitUserSearchController as searchCtrl">
@@ -22,7 +23,7 @@
 
     <ul class='list-group'>
       <li class="list-group-item" ng-repeat='item in searchCtrl.searchResult.items'>
-        <img ng-src='{{item.avatar_url}}'>
+        <img ng-src='{{item.avatar_url}}' width='50px'>
         <a ng-Href='{{item.html_url}}'>{{item.login}}</a>
       </li>
     </ul>
