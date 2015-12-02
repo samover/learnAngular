@@ -1,7 +1,7 @@
 describe('GitUserSearchController', function() {
   var ctrl,
-  mockSearch,
   searchFake,
+  scope,
   items;
 
   items = [
@@ -20,17 +20,17 @@ describe('GitUserSearchController', function() {
   beforeEach (module('GitUserSearch'));
 
   beforeEach(function(){
-    searchFake = jasmine.createSpyObj('fakeSearch', ["query"]);
+    // Create a spy object fakeSearch which responds to method 'query'
+    searchFake = jasmine.createSpyObj('searchFake', ["query"]);
+    // Basically: when controller calls Search, test uses searchFake
     module({ Search: searchFake });
   });
 
-  var scope; 
   beforeEach(inject(function($controller, Search, $q, $rootScope) {
     scope = $rootScope;
-
     ctrl = $controller('GitUserSearchController');
     
-    searchFake.query.and.returnValue($q.when({data: {items: items}}))
+    searchFake.query.and.returnValue($q.when({data: {items: items}}));
   }));
 
   it('initialises with an empty search result and term', function() {
