@@ -38,6 +38,59 @@ building etc... Often for the latter a combination of both.
 * BREW instead is a osx package manager and is not specific to development.
 
 
+factories
+---------
+
+Controllers should stay thin and logic-free. So where to put all that beautiful
+code your wrote?
+
+Angular has three concepts to help organize code and which can be injected into
+objects on a need-only basis (Ang has built-in service like $http and
+$resource): 
+
+* services
+* factories
+* providers
+
+In baby language: services and factories are a recipe for the injector on how to
+fabricate an object. For example: 
 
 
+A factory RETURNS something: an object, a primitve, a function.
 
+```javascript
+app.factory('calculateFactory', function() {
+  return {
+    add: function(x, y) {
+      return x + y;
+    }
+  }
+});
+```
+
+A service CREATES a new object:
+
+```javascript
+app.service('calculator', function() {
+  this.add = function(x, y) {
+    return x + y;
+  }
+});
+```
+
+At this point, inject them into a controller:
+
+```javascript
+app.controller('someCtrl', ['calculateFactory', function(calculateFactory) {
+  ...
+  var sum = calculatedFactory.add(3, 5); // returns 8
+}]);
+```
+
+```javascript
+app.controller('someCtrl', ['calculator', function(calculator) {
+  ...
+  var calc = new Calculator();
+  var sum = calc.add(3, 5); 
+}]);
+```
