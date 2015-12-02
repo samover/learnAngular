@@ -22,7 +22,8 @@
       'blur': 0 } }" type='text /'>
       <button ng-click='searchCtrl.doSearch()' class='btn'>Search</button>
     </form>
-    <h3 ng-show='searchCtrl.searchTerm'>Your search for {{ searchCtrl.searchTerm }}
+    <h3 ng-show='searchCtrl.searchTerm'>Your search for {{ searchCtrl.searchTerm
+      }} returned {{ searchCtrl.searchResult.total_count }} items.
     </h3>
     <ul class='list-group'>
       <li class="list-group-item" ng-repeat='item in searchCtrl.searchResult.items'>
