@@ -38,8 +38,8 @@
 
         <div class='stats'>
           <h4><a ng-Href='{{item.html_url}}'>{{item.login}}</a></h4>
-          <p class='repos'>Repos</p>
-          <p class='followers'>Followers: </p>
+          <p class='repos'><a ng-Href='{{ item.repos_url }}'>repositories</p>
+          <p class='followers'><a ng-Href='{{ item.followers_url }}'>followers</p>
         </div>
 
       </article>

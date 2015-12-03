@@ -24,13 +24,13 @@ describe('Github Profile Finder', function() {
     });
 
     it('lists link to repos of searched user', function() {
-      var html = '<a href="https://github.com/samover?tab=repositories">repositories</a>';
-      expect(repos.first().getInnerHtml()).toEqual(html);
+      var html = 'href="https://api.github.com/users/samover/repos"';
+      expect(repos.first().getInnerHtml()).toContain(html);
     });
 
     it('lists link to followers of searched user', function() {
-      var html = '<a href="https://github.com/samover/followers"<followers</a>';
-      expect(followers.first().getInnerHtml()).toEqual(html);
+      var html = 'href="https://api.github.com/users/samover/repos"';
+      expect(followers.first().getInnerHtml()).toContain(html);
     });
   });
 });
