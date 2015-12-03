@@ -13,25 +13,41 @@
     <div class='stats'>
       <h4><a ng-Href='{{item.html_url}}'>{{item.login}}</a></h4>
 
-      <div ng-controller='ProfileController as profile'>
-        <section class='panel'>
-          <ul class='nav nav-pills'>
-            <li class='repos'>
-              <a ng-click='panel.setTab(1)'>repositories</a>
-            </li>
-            <li class='followers'>
-              <a ng-click='panel.setTab(2)'>followers</a>
+      <section ng-controller='ProfileController as profile' class='profile-panel'>
+        <ul class='nav nav-pills'>
+
+          <li class='repos'>
+            <a ng-href='{{item.repos_url}}' id='1' ng-click='profile.setProfile($event)'>Repositories</a>
+          </li>
+
+          <li class='followers'>
+            <a ng-href='{{item.followers_url}}' id='2' ng-click='profile.setProfile($event)'>Followers</a>
+          </li>
+
+        </ul>
+        <div ng-show='profile.isSet(1)'>
+          <ul ng-repeat='repo in profile.data'>
+            <li>
+              <a ng-href='{{ repo.html_url }}'>{{ repo.name }}</a>
             </li>
           </ul>
+        </div>
 
-          <div>
-            <user-repositories ng-show='panel.isSet(1)'></user-repositories>
-          </div>
-          <div>
-            <user-followers ng-show='panel.isSet(2)'></user-followers>
-          </div>
-        </section>
-      </div>
+        <div ng-show='profile.isSet(2)'>
+          <ul ng-repeat='follower in profile.data'>
+            <li>
+              <a ng-href='{{ follower.html_url }}'>{{ follower.login }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--<div>-->
+          <!--<user-repositories ng-show='panel.isSet(1)'></user-repositories>-->
+        <!--</div>-->
+        <!--<div>-->
+          <!--<user-followers ng-show='panel.isSet(2)'></user-followers>-->
+        <!--</div>-->
+      </section>
     </div>
 
   </article>
