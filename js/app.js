@@ -1,15 +1,22 @@
-var githubUserSearch = angular.module('GitUserSearch', ['ngResource']);
+(function() {
+  
+  var app = angular.module('GitUserSearch', ['ngResource', 'constants', 
+                           'github-profiles', 'github-search']);
 
-githubUserSearch.directive('searchForm', function() {
-  return {
-    restrict: 'E',
-    templateUrl: '/partials/search-form.html'
-  };
-});
+  app.factory('Search', ['$http', 'ENV', function($http, ENV) {
+    var queryUrl = 'https://api.github.com/search/users';
 
-githubUserSearch.directive('searchResults', function() {
-  return {
-    restrict: 'E',
-    templateUrl: '/partials/search-results.html'
-  };
-});
+    return {
+      query: function(searchTerm) {
+        return $http({
+          url: queryUrl,
+          method: 'GET',
+          params: {
+            'q': searchTerm,
+            'access_token': ENV.github_token
+          }
+        });
+      }
+    };
+  }]);
+})();

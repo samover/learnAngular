@@ -12,8 +12,26 @@
 
     <div class='stats'>
       <h4><a ng-Href='{{item.html_url}}'>{{item.login}}</a></h4>
-      <p class='repos'><a ng-Href='{{ item.repos_url }}'>repositories</p>
-      <p class='followers'><a ng-Href='{{ item.followers_url }}'>followers</p>
+
+      <div ng-controller='ProfileController as profile'>
+        <section class='panel'>
+          <ul class='nav nav-pills'>
+            <li class='repos'>
+              <a ng-click='panel.setTab(1)'>repositories</a>
+            </li>
+            <li class='followers'>
+              <a ng-click='panel.setTab(2)'>followers</a>
+            </li>
+          </ul>
+
+          <div>
+            <user-repositories ng-show='panel.isSet(1)'></user-repositories>
+          </div>
+          <div>
+            <user-followers ng-show='panel.isSet(2)'></user-followers>
+          </div>
+        </section>
+      </div>
     </div>
 
   </article>
