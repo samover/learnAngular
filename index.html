@@ -17,34 +17,15 @@
 </head>
 
 <body ng-controller="GitUserSearchController as searchCtrl">
-  <div class=' col-xs-6 col-xs-offset-3'>
-  <h1>Github User Search<h2>
 
-    <form class='form-horizontal'>
-      <input ng-model='searchCtrl.searchTerm' ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" type='text /'>
-      <button ng-click='searchCtrl.doSearch()' class='btn'>Search</button>
-    </form>
+  <header class=' col-xs-6 col-xs-offset-3'>
+    <h1>Github User Search<h1>
+  </header>
 
-    <h3 ng-show='searchCtrl.searchTerm'>Your search for {{ searchCtrl.searchTerm
-      }} returned {{ searchCtrl.searchResult.total_count }} items.
-    </h3>
+  <main class=' col-xs-6 col-xs-offset-3'>
 
-    <section ng-show='searchCtrl.searchTerm' class='list-group'>
-      <article class="list-group-item" ng-repeat='item in searchCtrl.searchResult.items'>
+    <search-form></search-form>
+    <search-results ng-show='searchCtrl.searchTerm'></search-results>
 
-        <div class='pull-left img-container'>
-          <img ng-src='{{item.avatar_url}}' width='100%'>
-        </div>
-
-        <div class='stats'>
-          <h4><a ng-Href='{{item.html_url}}'>{{item.login}}</a></h4>
-          <p class='repos'><a ng-Href='{{ item.repos_url }}'>repositories</p>
-          <p class='followers'><a ng-Href='{{ item.followers_url }}'>followers</p>
-        </div>
-
-      </article>
-    </section>
-
-  </div>
 </body>
 </html>
