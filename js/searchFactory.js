@@ -1,4 +1,4 @@
-githubUserSearch.factory('Search', ['$http', function($http) {
+githubUserSearch.factory('Search', ['$http', 'ENV', function($http, ENV) {
   var queryUrl = 'https://api.github.com/search/users';
 
   return {
@@ -7,7 +7,8 @@ githubUserSearch.factory('Search', ['$http', function($http) {
         url: queryUrl,
         method: 'GET',
         params: {
-          'q': searchTerm
+          'q': searchTerm,
+          'access_token': ENV.github_token
         }
       });
     }

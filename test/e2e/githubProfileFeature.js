@@ -1,6 +1,7 @@
 describe('Github Profile Finder', function() {
   var searchBox = element(by.model('searchCtrl.searchTerm'));
   var searchButton = element(by.className('btn'));
+  var profiles = element.all(by.repeater('item in searchCtrl.searchResult.items'));
 
   beforeEach(function() {
     browser.get('http://localhost:3000');
@@ -10,11 +11,18 @@ describe('Github Profile Finder', function() {
     expect(browser.getTitle()).toEqual('Github User Search');
   });
 
-  it('finds profiles', function() {
-    searchBox.sendKeys('spike01');
-    searchButton.click();
-  
-    expect(element(by.binding('item.login')).getText()).
-      toEqual('spike01');
+  describe('User search', function() {
+    beforeEach(function() {
+      searchBox.sendKeys('samover');
+      searchButton.click();
+    });
+
+    it('finds profiles', function() {
+      expect(profiles.first().getText()).toEqual('samover');
+    });
+
+    it('lists shows amount of followers and repos', function() {
+
+    });
   });
 });

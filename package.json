@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/mattia46/githubChallengeJS#readme",
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-ng-constant": "^1.1.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.15",
     "karma-chrome-launcher": "^0.2.1",
