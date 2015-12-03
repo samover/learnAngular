@@ -17,15 +17,14 @@
 </head>
 
 <body ng-controller="GitUserSearchController as searchCtrl">
-
-  <header class=' col-xs-6 col-xs-offset-3'>
-    <h1>Github User Search<h1>
+  <header class='col-xs-6 col-xs-offset-3'>
+    <h1>Github User Search</h1>
   </header>
 
-  <main class=' col-xs-6 col-xs-offset-3'>
-
+  <div class=' col-xs-6 col-xs-offset-3'>
     <search-form></search-form>
     <search-results ng-show='searchCtrl.searchTerm'></search-results>
+  </div>
 
 </body>
 </html>

@@ -1,0 +1,20 @@
+<h3 >Your search for {{ searchCtrl.searchTerm
+  }} returned {{ searchCtrl.searchResult.total_count }} items.
+</h3>
+
+<section class='list-group'>
+
+  <article class="list-group-item" ng-repeat='item in searchCtrl.searchResult.items'>
+
+    <div class='pull-left img-container'>
+      <img ng-src='{{item.avatar_url}}' width='100%'>
+    </div>
+
+    <div class='stats'>
+      <h4><a ng-Href='{{item.html_url}}'>{{item.login}}</a></h4>
+      <p class='repos'><a ng-Href='{{ item.repos_url }}'>repositories</p>
+      <p class='followers'><a ng-Href='{{ item.followers_url }}'>followers</p>
+    </div>
+
+  </article>
+</section>
